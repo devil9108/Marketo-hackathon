@@ -8,45 +8,49 @@ import {
   ListGroupItem,
   Form,
   Button,
-  ButtonGroup
+  ToggleButtonGroup,
+  ButtonToolbar,
+  ToggleButton
 } from "react-bootstrap";
 
 class Marks extends Component {
   constructor() {
     super();
     this.state = {
-      design: 1,
-      presentation: 1,
-      overall: 1
+      design: 0,
+      innovation: 0,
+      bussiness: 0,
+      solution: 0,
+      working: 0,
+      presentation: 0,
+      comments:''
     };
   }
 
   onChangeValue = e => {
-    e.preventDefault();
+    let selected = e.target.name;
     this.setState({
-      design: e.target["design"].value,
-      presentation: e.target["presentation"].value,
-      overall: e.target["overall"].value
+      [selected] : e.target.value
     });
     console.log(this.state);
   };
 
   renderDropdown = attr => {
     return (
-      <div className="d-flex flex-column">
-        <ButtonGroup size="sm" className="mt-3 ">
-          <Button>1</Button>
-          <Button>2</Button>
-          <Button>3</Button>
-          <Button>4</Button>
-          <Button>5</Button>
-          <Button>6</Button>
-          <Button>7</Button>
-          <Button>8</Button>
-          <Button>9</Button>
-          <Button>10</Button>
-        </ButtonGroup>
-      </div>
+      <ButtonToolbar className="d-flex flex-column">
+        <ToggleButtonGroup size="sm" className="mt-3" type = 'radio' name={attr} onClick={this.onChangeValue}>
+          <ToggleButton variant="outline-dark" value='1'>1</ToggleButton>
+          <ToggleButton variant="outline-dark" value='2'>2</ToggleButton>
+          <ToggleButton variant="outline-dark" value='3'>3</ToggleButton>
+          <ToggleButton variant="outline-dark" value='4'>4</ToggleButton>
+          <ToggleButton variant="outline-dark" value='5'>5</ToggleButton>
+          <ToggleButton variant="outline-dark" value='6'>6</ToggleButton>
+          <ToggleButton variant="outline-dark" value='7'>7</ToggleButton>
+          <ToggleButton variant="outline-dark" value='8'>8</ToggleButton>
+          <ToggleButton variant="outline-dark" value='9'>9</ToggleButton>
+          <ToggleButton variant="outline-dark" value='10'>10</ToggleButton>
+        </ToggleButtonGroup>
+      </ButtonToolbar>
     );
   };
   render() {
@@ -64,18 +68,36 @@ class Marks extends Component {
                 <Card.Text className="text-center">Team Name</Card.Text>
               </Card.Body>
               <ListGroup className="list-group-flush">
-                <Form onSubmit={this.onChangeValue}>
+                <Form>
                   <ListGroupItem>
-                    <h6 className="d-inline-block">Design</h6>{" "}
+                    <h6 className="d-inline-block">1.Design</h6>{" "}
                     {this.renderDropdown("design")}
                   </ListGroupItem>
                   <ListGroupItem>
-                    <h6 className="d-inline-block">Presentation</h6>{" "}
+                    <h6 className="d-inline-block">2.Innovation & Advancement</h6>{" "}
+                    {this.renderDropdown("innovation")}
+                  </ListGroupItem>
+                  <ListGroupItem>
+                    <h6 className="d-inline-block">3.Bussiness Implication of Idea</h6>{" "}
+                    {this.renderDropdown("bussiness")}
+                  </ListGroupItem>
+                  <ListGroupItem>
+                    <h6 className="d-inline-block">4.Solution Approach And Architecture</h6>{" "}
+                    {this.renderDropdown("solution")}
+                  </ListGroupItem>
+                  <ListGroupItem>
+                    <h6 className="d-inline-block">5.Working Demo Of Idea</h6>{" "}
+                    {this.renderDropdown("demo")}
+                  </ListGroupItem>
+                  <ListGroupItem>
+                    <h6 className="d-inline-block">6.Presentation And Demonstration</h6>{" "}
                     {this.renderDropdown("presentation")}
                   </ListGroupItem>
                   <ListGroupItem>
-                    <h6 className="d-inline-block">Overall</h6>{" "}
-                    {this.renderDropdown("overall")}
+                    <h6 className="d-inline-block">7.Things that impressed you about this team.</h6>{" "}
+                    <Form.Group controlId="comments" name='comments' onChange={this.onChangeValue}>
+                      <Form.Control as="textarea" rows="3" placeHolder='Enter Your Answer Here...' />
+                    </Form.Group>
                   </ListGroupItem>
                   <Card.Link as={Button} type="submit" className="float-right">
                     Submit
