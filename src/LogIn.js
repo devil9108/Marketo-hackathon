@@ -23,15 +23,17 @@ class LogIn extends Component {
   };
 
   handleChange = (e) => {
-    this.setState({
-      [e.taget.name] : e.target.value
-    })
+     this.setState({
+       [e.target.name] : e.target.value
+     })
   };
 
   handleSubmit = (e) =>{
     e.preventDefault();
-    let userId = this.state.userName+'adobe.com';
+    let userId = this.state.userName+'@adobe.com';
+    console.log(userId);
     this.props.getUserDetailsThunk(userId);
+    this.setState({userName:''})
   };
 
   render() {
@@ -40,7 +42,7 @@ class LogIn extends Component {
         <Row className="justify-content-center row1">
           <Col md={6} className="my-auto">
             <Card className="text-center">
-              <Card.Img variant="top" src="holder.js/100px180" />
+              <Card.Img variant="top" src="/Marketo-logo.g/100px180" />
               <Card.Body>
                 <Card.Title>Marketo - Hackathon</Card.Title>
                 <Card.Text>
@@ -48,6 +50,7 @@ class LogIn extends Component {
                     <FormControl
                       placeholder="username"
                       aria-label="userName"
+                      name='userName'
                       aria-describedby="basic-addon2"
                       onChange = {this.handleChange}
                     />
@@ -58,7 +61,8 @@ class LogIn extends Component {
                     </InputGroup.Append>
                   </InputGroup>
                 </Card.Text>
-                <Button variant="primary" onClick={this.handleSubmit}>Log - In</Button>
+                <Button variant="primary" onClick={this.handleSubmit}>Submit</Button>
+                {this.props.error.msg ? <p>{this.props.error.msg}</p>:''}
               </Card.Body>
             </Card>
           </Col>
@@ -68,7 +72,9 @@ class LogIn extends Component {
   }
 }
 
-let mapStateToProps = state => ({});
+let mapStateToProps = state => ({
+  error : state.error
+});
 
 let mapActionsToProps = {
   getUserDetailsThunk

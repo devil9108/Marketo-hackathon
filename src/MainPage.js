@@ -52,7 +52,7 @@ class MainPage extends Component {
     return (
       <Container className='mx-auto h-10'>
         <Row className='m-5'>
-          <Col md={6}><h2>Marketo - Heckathon</h2></Col>
+          <Col md={6} xs={1}><h2>Marketo - Heckathon</h2></Col>
           <Col md={6} className='float-right'><h4 className='float-right'>UserName</h4></Col>
         </Row>
         <Row>

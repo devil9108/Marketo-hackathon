@@ -3,7 +3,8 @@ let initialState = {
   isLoading: false,
   user: {},
   participents:[],
-  ratings : {}
+  ratings : {},
+  error : {}
 }
 
 export default function(state = initialState, action) {
@@ -13,7 +14,17 @@ export default function(state = initialState, action) {
         ...state,
         isAutheticated: true,
         user: action.payload
-      };
+      }
+    case 'ERROR' :
+      return {
+        ...state,
+        error: action.payload
+      }
+    case 'REMOVE-ERROR' :
+      return {
+        ...state,
+        error:{}
+      }
     default:
       return state;
   }
