@@ -1,8 +1,10 @@
 let initialState = {
   isAutheticated: false,
   isLoading: false,
-  user: {}
-};
+  user: {},
+  participents:[],
+  ratings : {}
+}
 
 export default function(state = initialState, action) {
   switch (action.type) {

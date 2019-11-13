@@ -12,8 +12,28 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles.css";
 
 import { connect } from "react-redux";
+import {getUserDetailsThunk} from './Redux/thunk'
 
 class LogIn extends Component {
+  constructor(){
+    super();
+    this.state={
+      userName : ''
+    }
+  };
+
+  handleChange = (e) => {
+    this.setState({
+      [e.taget.name] : e.target.value
+    })
+  };
+
+  handleSubmit = (e) =>{
+    e.preventDefault();
+    let userId = this.state.userName+'adobe.com';
+    this.props.getUserDetailsThunk(userId);
+  };
+
   render() {
     return (
       <Container className="mx-auto">
@@ -27,8 +47,9 @@ class LogIn extends Component {
                   <InputGroup as={Col}>
                     <FormControl
                       placeholder="username"
-                      aria-label="username"
+                      aria-label="userName"
                       aria-describedby="basic-addon2"
+                      onChange = {this.handleChange}
                     />
                     <InputGroup.Append>
                       <InputGroup.Text id="basic-addon2">
@@ -37,7 +58,7 @@ class LogIn extends Component {
                     </InputGroup.Append>
                   </InputGroup>
                 </Card.Text>
-                <Button variant="primary">Log - In</Button>
+                <Button variant="primary" onClick={this.handleSubmit}>Log - In</Button>
               </Card.Body>
             </Card>
           </Col>
@@ -49,7 +70,9 @@ class LogIn extends Component {
 
 let mapStateToProps = state => ({});
 
-let mapActionsToProps = {};
+let mapActionsToProps = {
+  getUserDetailsThunk
+};
 
 export default connect(
   mapStateToProps,
