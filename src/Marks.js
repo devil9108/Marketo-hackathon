@@ -56,7 +56,7 @@ class Marks extends Component {
   render() {
     return (
       <Container className="mx-auto">
-        <Row className="justify-content-center">
+        <Row className="justify-content-center row1">
           <Col md={6} className="my-auto">
             <Card>
               <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
