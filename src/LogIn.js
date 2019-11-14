@@ -62,7 +62,7 @@ class LogIn extends Component {
                   </InputGroup>
                 </Card.Text>
                 <Button variant="primary" onClick={this.handleSubmit}>Submit</Button>
-                {this.props.error.msg ? <p>{this.props.error.msg}</p>:''}
+                {this.props.error.msg ? <p className='text-anger'>{this.props.error.msg}</p>:''}
               </Card.Body>
             </Card>
           </Col>

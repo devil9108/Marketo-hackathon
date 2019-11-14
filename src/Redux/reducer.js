@@ -15,6 +15,11 @@ export default function(state = initialState, action) {
         isAutheticated: true,
         user: action.payload
       }
+    case 'ADD-PARTICIPENTS':
+      return {
+        ...state,
+        participents: action.payload
+      }
     case 'ERROR' :
       return {
         ...state,
