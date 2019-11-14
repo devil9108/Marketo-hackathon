@@ -45,7 +45,7 @@ class LogIn extends Component {
               <Card.Img variant="top" src="/Marketo-logo.g/100px180" />
               <Card.Body>
                 <Card.Title>Marketo - Hackathon</Card.Title>
-                <Card.Text>
+                <Card.Text as={Col}>
                   <InputGroup as={Col}>
                     <FormControl
                       placeholder="username"

@@ -1,29 +1,28 @@
 let ratings = {
   "ideaId" : "asset-versioning",
-  "reviewerEmail": "pen87833@adobe.com",
-  "ratings": {
+  "rating": {
       "Design" : {
-          "rating" : 3.2,
+          "rating" : 3,
           "comments" : "empty"
       },
       "Innovation and Advancement" : {
-          "rating" : 4.2,
+          "rating" : 4,
           "comments" : "empty"
       },
       "Business implication of the idea" : {
-          "rating" : 1.2,
+          "rating" : 1,
           "comments" : "empty"
       },
       "Solution Approach and Architecture" : {
-          "rating" : 1.2,
+          "rating" : 7,
           "comments" : "empty"
       },
       "Working demo of the Idea" : {
-          "rating" : 1.2,
+          "rating" : 1,
           "comments" : "empty"
       },
       "Presentation and Demonstration" : {
-          "rating" : 1.2,
+          "rating" : 9,
           "comments" : "empty"
       }
   },

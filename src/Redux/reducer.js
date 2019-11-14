@@ -4,7 +4,8 @@ let initialState = {
   user: {},
   participents:[],
   ratings : {},
-  error : {}
+  error : {},
+  participent : {}
 }
 
 export default function(state = initialState, action) {
@@ -19,6 +20,18 @@ export default function(state = initialState, action) {
       return {
         ...state,
         participents: action.payload
+      }
+    case 'LOAD-RATING-DETAILS' : 
+      return {
+        ...state,
+        ratings : {...action.payload}
+      }
+    case 'MAP-IDEA-DETAILS' :
+      let participent = state.participents.find((idea) => (idea.id === action.payload));
+      console.log(participent);
+      return{
+        ...state,
+        participent : {...participent}
       }
     case 'ERROR' :
       return {
